@@ -8,11 +8,19 @@ module.exports = function(grunt) {
         	  helpers: 'spec/*Helper.js'
         	}
       }
+    },
+    bower: {
+      install: {
+        options: {
+          copy: false
+        }
+      }
     }
   });
 
+  grunt.loadNpmTasks('grunt-bower-task');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
 
   // Default task.
-  grunt.registerTask('default', 'jasmine');
+  grunt.registerTask('default', ['bower', 'jasmine']);
 };
